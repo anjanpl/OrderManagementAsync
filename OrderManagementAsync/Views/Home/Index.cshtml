@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Supplier>
+
+@{
+    ViewBag.Title = "Supplier List";
+}
+
+
+<div class="card-deck">
+    @foreach (var supplier in Model)
+    {
+       
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+               Supplier Name: <h4>@supplier.Name</h4>
+               Address line 1: <h4>@supplier.AddresslineOne</h4>
+               Address line 2: <h4>@supplier.AddresslineTwo</h4>
+               City: <h4>@supplier.City</h4>
+               Postal Code: <h4>@supplier.PostalCode</h4>
+               State: <h4>@supplier.State</h4>
+            </div>
+            
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="details" 
+                   asp-route-id="@supplier.Id"
+                   class="btn btn-primary m-1">View</a>
+                <a asp-action="edit" asp-controller="home"
+                   asp-route-id="@supplier.Id"
+                   class="btn btn-primary m-1">Edit</a>
+                
+                <form method="post" asp-action = "delete" asp-controller="home" asp-route-id="@supplier.Id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+            </div>
+        </div>
+    }
+</div>

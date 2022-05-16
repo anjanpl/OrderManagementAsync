@@ -1,0 +1,40 @@
+﻿@model HomeDetailsViewModel
+
+@{
+    ViewBag.Title = "Supplier Details";   
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Supplier.Name</h1>
+            </div>
+
+            <div class="card-body text-center">               
+
+                <h4>Supplier ID : @Model.Supplier.Id</h4>
+                <h4>Supplier Name : @Model.Supplier.Name</h4>     
+                <h4>Address Line 1 : @Model.Supplier.AddresslineOne</h4>  
+                <h4>Address Line 2 : @Model.Supplier.AddresslineTwo</h4>  
+                <h4>City : @Model.Supplier.City</h4>  
+                <h4>Postal Code : @Model.Supplier.PostalCode</h4>  
+                <h4>State : @Model.Supplier.State</h4>  
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" 
+                   class="btn btn-primary">Back</a>
+                <a asp-action="edit" asp-controller="home"
+                   asp-route-id="@Model.Supplier.Id"
+                   class="btn btn-primary">Edit</a>
+               <form method="post" asp-action = "delete" asp-controller="home" asp-route-id="@Model.Supplier.Id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+   
+}
